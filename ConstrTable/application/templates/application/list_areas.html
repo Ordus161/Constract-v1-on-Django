@@ -1,0 +1,6 @@
+<div class="list-group">
+    № объекта:
+    {% for item in categories %}
+    <a href="{{ item.get_absolute_url }}" class="list-group-item list-group-item-action">{{item.numb}}</a>
+    {% endfor %}
+</div>

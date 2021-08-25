@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block name %}
+Добавление заявки:: {{block.super}}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<h1>Добавление заявки</h1>
+
+<form action="{% url 'add_application' %}" method="post">
+    {% csrf_token %} {% comment %} Добавляется для защиты от подделки {% endcomment %}
+
+    {{ form.as_p }}  {% comment %} Добавление полей через параграф    {% endcomment %}
+    {% comment %}
+    {{form.non_field.errors}}
+    <div class="mb-3">
+        <label for="{{form.name.id_for_label}}" class="form-label">Наименование: </label>
+        {{form.name}}
+        <div class="invalid-feedback">
+            {{form.name.errors}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.brand.id_for_label}}" class="form-label">Бренд: </label>
+        {{form.brand}}
+        <div class="invalid-feedback">
+            {{form.brand.errors}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.quantity.id_for_label}}" class="form-label">Количество: </label>
+        {{form.quantity}}
+        <div class="invalid-feedback">
+            {{form.quantity.errors}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.link.id_for_label}}" class="form-label">Ссылка на товар: </label>
+        {{form.link}}
+        <div class="invalid-feedback">
+            {{form.link.errors}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.item.id_for_label}}" class="form-label">Артикул: </label>
+        {{form.item}}
+        <div class="invalid-feedback">
+            {{form.item.errors}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.shop.id_for_label}}" class="form-label">Магазин: </label>
+        {{form.shop}}
+        <div class="invalid-feedback">
+            {{form.shop.errors}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.area.id_for_label}}" class="form-label">Объект: </label>
+        {{form.area}}
+        <div class="invalid-feedback">
+            {{form.area.errors}}
+        </div>
+    </div>
+    {% endcomment %}
+
+
+    <button type="submit" class="btn btn-primary btn-block">Добавить заявку</button>
+
+</form>
+
+{% endblock %}

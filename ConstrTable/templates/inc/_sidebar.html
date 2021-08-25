@@ -1,0 +1,14 @@
+{% load application_tags %}
+{% comment %}
+<div class="list-group">
+    {% get_list_areas as categories %}
+    № объекта:
+    {% for item in categories %}
+    <a href="{% url 'area' item.pk %}" class="list-group-item list-group-item-action">{{item.numb}}</a>
+    {% endfor %}
+</div>
+
+<br>
+{% endcomment %}
+
+{% show_areas %}
